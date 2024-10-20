@@ -1,0 +1,52 @@
+@use "./typography";
+@use "./mixins" as *;
+@use "./variables" as *;
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+body {
+    font-family: "Moon2.0", Arial, sans-serif;
+    overflow-x: hidden;
+    min-height: 100vh;
+    background-color: $white;
+    color: $black;
+  }
+  
+  #root {
+   width: 100%;
+    min-height: 100vh;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  button:hover {
+    cursor: pointer;
+  }
+  
+  ol,
+  ul {
+    list-style: none;
+  }
+
+  a {
+    text-decoration: none;
+}
+
+button, input, textarea {
+  font-family: inherit;
+}
+  
