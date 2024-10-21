@@ -1,0 +1,15 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/global" as *;
+
+.causes-button {
+    // margin-left: auto;
+    // margin-right: auto;
+    color:$black;
+    background-color: $white;
+    border: 2px solid $black;
+    &__container {
+        display:flex;
+        justify-content: space-around;
+    }
+}

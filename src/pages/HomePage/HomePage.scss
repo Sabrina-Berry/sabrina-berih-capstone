@@ -3,3 +3,30 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/global" as *;
 
+.home-page {
+
+    &__search {
+        background-color: $white;
+        color: $black;
+        background-image: url("../../assets/icons/search-24px.svg");
+        border-radius: 15px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        outline: none;
+        padding-left: 20px;
+        word-spacing: -5px; 
+        background-position: 5px; 
+    }
+}
+
+// .home-page__search::placeholder {
+// text-align:center;
+// }
+
+.nonprofit-list {
+
+    &__image {
+        height:10rem;
+        width:10rem;
+    }
+}
