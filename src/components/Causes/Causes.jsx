@@ -1,14 +1,7 @@
 import "./Causes.scss";
 import { useState } from "react";
 
-function Causes() {
-  //   const [cause, setCause] = useState("animals");
-
-  function handleClick(cause) {
-    let causeParam = "";
-    causeParam = cause;
-  }
-
+function Causes({ handleClick }) {
   return (
     <>
       <div className="causes-button__container">

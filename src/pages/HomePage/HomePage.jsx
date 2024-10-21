@@ -2,32 +2,56 @@ import "./HomePage.scss";
 import axios from "axios";
 import Causes from "../../components/Causes/Causes";
 
-const url = import.meta.env.VITE_BACKEND_URL;
-const port = import.meta.env.VITE_PORT;
 const api_key = import.meta.env.VITE_API_KEY;
 import { useEffect, useState } from "react";
 
 function HomePage() {
   const [nameList, setNameList] = useState([]);
   const [search, setSearch] = useState("");
+  const [cause, setCause] = useState("first_render");
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState("");
 
+  function handleCause(newCause) {
+    setCause(newCause);
+  }
+
+  console.log(cause);
   useEffect(() => {
-    axios
-      .get(
-        `https://partners.every.org/v0.2/browse/environment?apiKey=${api_key}`
-      )
-      .then((response) => {
+    const getData = async (cause) => {
+      try {
+        const response = await axios.get(
+          `https://partners.every.org/v0.2/browse/${cause}?apiKey=${api_key}`
+        );
+        console.log(response.data);
         setNameList(response.data.nonprofits);
-      });
-  }, []);
+        setIsLoading(false);
+      } catch (error) {
+        if (error.status === 404) {
+          console.log("Error fetching Nonprofits", error);
+        } else {
+          setError(error.message);
+        }
+      }
+    };
+    getData(cause);
+  }, [cause]);
+
+  if (isLoading) {
+    return <>Loading NonProfits...</>;
+  }
+
+  if (error) {
+    return <>{`${error} error...`}</>;
+  }
 
   return (
     <>
-      <Causes />
+      <Causes handleClick={handleCause} />
       <input
         type="text"
         className="home-page__search"
-        placeholder="Search for a cause..."
+        placeholder="Filter search results..."
         onChange={(e) => setSearch(e.target.value)}
       />
       {nameList
