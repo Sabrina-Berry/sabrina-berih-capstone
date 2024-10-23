@@ -7,8 +7,8 @@ const api_key = import.meta.env.VITE_API_KEY;
 import { useEffect, useState } from "react";
 
 function HomePage() {
-  const [nameList, setNameList] = useState([]);
-  const [selectedItem, setSelectedItem] = useState(null);
+  const [orgList, setOrgList] = useState([]);
+  const [selectedOrg, setSelectedOrg] = useState(null);
   const [search, setSearch] = useState("");
   const [cause, setCause] = useState("first_render");
   const [isLoading, setIsLoading] = useState(true);
@@ -24,7 +24,7 @@ function HomePage() {
   };
 
   const openModal = (item) => {
-    setSelectedItem(item);
+    setSelectedOrg(item);
     setModal(true);
   };
 
@@ -42,7 +42,7 @@ function HomePage() {
           `https://partners.every.org/v0.2/browse/${cause}?apiKey=${api_key}`
         );
         console.log(response.data);
-        setNameList(response.data.nonprofits);
+        setOrgList(response.data.nonprofits);
         setIsLoading(false);
       } catch (error) {
         if (error.status === 404) {
@@ -72,7 +72,7 @@ function HomePage() {
         placeholder="Filter search results..."
         onChange={(e) => setSearch(e.target.value)}
       />
-      {nameList
+      {orgList
         .filter((item) => {
           if (search === "") {
             return item;
@@ -94,12 +94,12 @@ function HomePage() {
                     src={item.coverImageUrl}
                   />
                 </button>
-                {modal && selectedItem && (
+                {modal && selectedOrg && (
                   <div className="modal">
                     <div onClick={toggleModal} className="overlay"></div>
                     <div className="modal-content">
-                      <h2>{selectedItem.name}</h2>
-                      <p>{selectedItem.location}</p>
+                      <h2>{selectedOrg.name}</h2>
+                      <p>{selectedOrg.location}</p>
                       <button className="close-modal" onClick={toggleModal}>
                         <img src={closeIcon} alt="close icon" />
                       </button>
