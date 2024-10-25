@@ -1,0 +1,21 @@
+.about-page {
+    &__header{
+        font-size: 3rem;
+    }
+    &__image{
+        width:14rem;
+        height:14rem;
+    }
+    &__item{
+        display: flex;
+    }
+
+    &__container--left{
+        width:49%;
+    }
+
+    &__container--right{
+        width:49%;
+        font-size:2rem;
+    }
+}

@@ -1,6 +1,5 @@
-import { useState } from "react";
-import viteLogo from "/vite.svg";
 import HomePage from "./pages/HomePage/HomePage";
+import AboutPage from "./pages/AboutPage/AboutPage";
 import Header from "./components/Header/Header";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -12,6 +11,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/AboutPage" element={<AboutPage />} />
         </Routes>
       </BrowserRouter>
     </>
