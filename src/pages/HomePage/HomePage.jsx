@@ -2,18 +2,19 @@ import "./HomePage.scss";
 import axios from "axios";
 import Causes from "../../components/Causes/Causes";
 import closeIcon from "../../assets/icons/close-24px.svg";
+import { useEffect, useState } from "react";
 
 const api_key = import.meta.env.VITE_API_KEY;
-import { useEffect, useState } from "react";
 
 function HomePage() {
   const [orgList, setOrgList] = useState([]);
-  const [selectedOrg, setSelectedOrg] = useState(null);
+  // const [selectedOrg, setSelectedOrg] = useState(null);
   const [search, setSearch] = useState("");
   const [cause, setCause] = useState("first_render");
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
   const [modal, setModal] = useState(false);
+  const [orgDetails, setOrgDetails] = useState(null);
 
   function handleCause(newCause) {
     setCause(newCause);
@@ -24,8 +25,27 @@ function HomePage() {
   };
 
   const openModal = (item) => {
-    setSelectedOrg(item);
+    // setSelectedOrg(item);
+    console.log(item.slug);
+    getOrgDetails(item.slug);
     setModal(true);
+  };
+
+  const getOrgDetails = async (slug) => {
+    console.log(slug);
+    try {
+      const response = await axios.get(
+        `https://partners.every.org/v0.2/nonprofit/${slug}?apiKey=${api_key}`
+      );
+      console.log(response.data);
+      setOrgDetails(response.data);
+    } catch (error) {
+      if (error.status === 404) {
+        console.log("Error fetching Nonprofit details", error);
+      } else {
+        setError(error.message);
+      }
+    }
   };
 
   if (modal) {
@@ -36,7 +56,7 @@ function HomePage() {
 
   console.log(cause);
   useEffect(() => {
-    const getData = async (cause) => {
+    const getData = async () => {
       try {
         const response = await axios.get(
           `https://partners.every.org/v0.2/browse/${cause}?apiKey=${api_key}`
@@ -52,7 +72,7 @@ function HomePage() {
         }
       }
     };
-    getData(cause);
+    getData();
   }, [cause]);
 
   if (isLoading) {
@@ -65,6 +85,7 @@ function HomePage() {
 
   return (
     <>
+      <h2>I want to help...</h2>
       <Causes handleClick={handleCause} />
       <input
         type="text"
@@ -94,12 +115,26 @@ function HomePage() {
                     src={item.coverImageUrl}
                   />
                 </button>
-                {modal && selectedOrg && (
+                {modal && orgDetails && (
                   <div className="modal">
                     <div onClick={toggleModal} className="overlay"></div>
                     <div className="modal-content">
-                      <h2>{selectedOrg.name}</h2>
-                      <p>{selectedOrg.location}</p>
+                      <h2>{orgDetails.data.nonprofit.name}</h2>
+                      <img
+                        className="nonprofit-list__image"
+                        src={orgDetails.data.nonprofit.coverImageUrl}
+                      />
+                      <h3>{orgDetails.data.nonprofit.locationAddress}</h3>
+                      <h3>
+                        {orgDetails
+                          ? orgDetails.data.nonprofit.description
+                          : "Loading org details..."}
+                      </h3>
+                      <h3>
+                        {orgDetails && orgDetails.data.nonprofit.websiteUrl
+                          ? `Check us out: ${orgDetails.data.nonprofit.websiteUrl}`
+                          : "URL not found"}
+                      </h3>
                       <button className="close-modal" onClick={toggleModal}>
                         <img src={closeIcon} alt="close icon" />
                       </button>

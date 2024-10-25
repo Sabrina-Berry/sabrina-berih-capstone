@@ -5,11 +5,27 @@
 .causes-button {
     // margin-left: auto;
     // margin-right: auto;
+    box-shadow: 2px 2px 2px #13182C;
     color:$black;
-    background-color: $white;
+    background-color: $blue;
     border: 2px solid $black;
-    &__container {
+    font-weight: 600;
+    font-size:1.5rem;
+    width:11rem;
+    height:6rem;
+    &__container-top {
         display:flex;
         justify-content: space-around;
+        padding-top:1rem;
+        padding-left:3rem;
+        padding-right:3rem;
+        padding-bottom:3rem;
+    }
+    &__container-bottom {
+        display:flex;
+        justify-content: space-around;
+        padding-left:3rem;
+        padding-right:3rem;
+        padding-bottom:3rem;
     }
 }

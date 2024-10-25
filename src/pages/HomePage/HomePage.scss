@@ -16,6 +16,8 @@
         padding-left: 20px;
         word-spacing: -5px; 
         background-position: 5px; 
+        margin-bottom: 2rem;
+        // padding: 1rem;
     }
 }
 
@@ -36,6 +38,9 @@
 
     &__btn-modal {
         width:fit-content;
+        background: $blue;
+        color: black;
+        border: 2px solid black;
     }
 }
 
