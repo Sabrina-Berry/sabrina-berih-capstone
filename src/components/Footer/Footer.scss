@@ -1,7 +1,18 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/global" as *;
+
+
 .hero {
     background-image: url("../../assets/images/hero3.png");
     background-position: center;
-    height: 60vh;
+    height: 67vh;
     background-repeat: no-repeat;
     background-size: cover;
+    @include tablet {
+        height:115vh;
+    }
+    @include desktop {
+        height:126vh;
+    }
 }

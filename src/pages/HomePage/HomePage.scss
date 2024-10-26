@@ -5,6 +5,11 @@
 
 .home-page {
 
+    &__header {
+        margin-top:11rem;
+        font-size: 2.5rem;
+    }
+
     &__search {
         background-color: $white;
         color: $black;
@@ -13,7 +18,9 @@
         background-repeat: no-repeat;
         background-size: contain;
         outline: none;
-        padding-left: 20px;
+        padding-left: 40px;
+        padding-top:10px;
+        padding-bottom:10px;
         word-spacing: -5px; 
         background-position: 5px; 
         margin-bottom: 2rem;
@@ -32,8 +39,12 @@
  padding-right: 3rem;
  padding-bottom: 3rem;
     &__image {
-        height:10rem;
-        width:10rem;
+        // height:20vh;
+        // width:30vw;
+        border-radius:8px 8px 0 0;
+        height:100%;
+        width:100%;
+
     }
 
     &__btn-modal {
@@ -42,14 +53,20 @@
         color: black;
         border: 2px solid black;
     }
+
+    &__name {
+        padding-top:0.5rem;
+        padding-bottom:1rem;
+    }
 }
 
 
-.nonrofit-list__btn-modal {
-    padding: 10px 20px;
-    display: block;
-    margin: 100px auto 0;
-    font-size: 18px;
+.nonprofit-list__btn-modal {
+    padding: 0;
+    border: 2rem;
+    // max-width:30vw;
+    // margin: 100px auto 0;
+    // font-size: 18px;
 }
 
 .modal, .overlay {
@@ -68,7 +85,7 @@
 }
 .modal-content {
     position: absolute;
-    top: 40%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     line-height: 1.4;

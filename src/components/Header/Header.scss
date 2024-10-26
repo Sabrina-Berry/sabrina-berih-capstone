@@ -5,8 +5,8 @@
 .header {
     background-color: $purple;
     width: 100%;
-    // position: fixed;
-    // z-index: 3;
+    position: fixed;
+    z-index: 2;
 
     &__wrapper {
         display: flex;
@@ -35,6 +35,7 @@
 
         &-link {
             color: $black;
+            font-size: 1.3rem;
         }
 
         &-item--active {

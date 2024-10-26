@@ -4,6 +4,7 @@ import Causes from "../../components/Causes/Causes";
 import Footer from "../../components/Footer/Footer";
 import closeIcon from "../../assets/icons/close-24px.svg";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const api_key = import.meta.env.VITE_API_KEY;
 
@@ -86,7 +87,7 @@ function HomePage() {
 
   return (
     <>
-      <h2>I want to help...</h2>
+      <h2 className="home-page__header">I Want To Help...</h2>
       <Causes handleClick={handleCause} />
       <input
         type="text"
@@ -110,11 +111,12 @@ function HomePage() {
                   className="nonprofit-list__btn-modal"
                   onClick={() => openModal(item)}
                 >
-                  <h2>{item.name}</h2>
                   <img
                     className="nonprofit-list__image"
                     src={item.coverImageUrl}
                   />
+                  <h2 className="nonprofit-list__name">{item.name}</h2>
+                  {/* <button>Learn More</button> */}
                 </button>
                 {modal && orgDetails && (
                   <div className="modal">
@@ -131,11 +133,13 @@ function HomePage() {
                           ? orgDetails.data.nonprofit.description
                           : "Loading org details..."}
                       </h3>
-                      <h3>
-                        {orgDetails && orgDetails.data.nonprofit.websiteUrl
-                          ? `Check us out: ${orgDetails.data.nonprofit.websiteUrl}`
-                          : "URL not found"}
-                      </h3>
+                      <Link to={orgDetails.data.nonprofit.websiteUrl}>
+                        <h3>
+                          {orgDetails && orgDetails.data.nonprofit.websiteUrl
+                            ? `Check us out: ${orgDetails.data.nonprofit.websiteUrl}`
+                            : "URL not found"}
+                        </h3>
+                      </Link>
                       <button className="close-modal" onClick={toggleModal}>
                         <img src={closeIcon} alt="close icon" />
                       </button>

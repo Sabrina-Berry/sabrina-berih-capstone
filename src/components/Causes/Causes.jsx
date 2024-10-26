@@ -31,7 +31,7 @@ function Causes({ handleClick }) {
           >
             Education
           </button>
-          <div className="tooltip-text">Filter by tags:...</div>
+          <div className="tooltip-text">Try searching: research, youth</div>
         </div>
       </div>
       <div className="causes-button__container-bottom">
@@ -42,7 +42,7 @@ function Causes({ handleClick }) {
           >
             Justice
           </button>
-          <div className="tooltip-text">Filter by tags:...</div>
+          <div className="tooltip-text">Try searching: housing, humans</div>
         </div>
         <div className="button-tooltip__container">
           <button
@@ -51,7 +51,7 @@ function Causes({ handleClick }) {
           >
             Religion
           </button>
-          <div className="tooltip-text">Filter by tags:...</div>
+          <div className="tooltip-text">Try searching: Christianity, Islam</div>
         </div>
         <div className="button-tooltip__container">
           <button
@@ -60,7 +60,9 @@ function Causes({ handleClick }) {
           >
             Culture
           </button>
-          <div className="tooltip-text">Filter by tags:...</div>
+          <div className="tooltip-text">
+            Try searching: Music, Mental Health
+          </div>
         </div>
       </div>
     </>
