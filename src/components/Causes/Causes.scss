@@ -3,8 +3,6 @@
 @use "../../styles/partials/global" as *;
 
 .causes-button {
-    // margin-left: auto;
-    // margin-right: auto;
     box-shadow: 2px 2px 2px #13182C;
     color:$black;
     background-color: $blue;
@@ -13,6 +11,7 @@
     font-size:1.5rem;
     width:11rem;
     height:6rem;
+    padding:0.5rem 1.2rem;
     &__container-top {
         display:flex;
         justify-content: space-around;
@@ -29,3 +28,31 @@
         padding-bottom:3rem;
     }
 }
+
+.button-tooltip__container {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip-text {
+    visibility:hidden;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: 120%;
+    width:11rem;
+    left: 50%;
+    margin-left: -55px;
+    opacity: 0.9;
+    transition: opacity 0.3s;
+    font-size: 1.5rem;
+}
+
+.button-tooltip__container:hover .tooltip-text{
+    visibility:visible;
+}
+

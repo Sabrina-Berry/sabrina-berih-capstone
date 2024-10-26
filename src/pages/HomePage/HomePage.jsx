@@ -1,6 +1,7 @@
 import "./HomePage.scss";
 import axios from "axios";
 import Causes from "../../components/Causes/Causes";
+import Footer from "../../components/Footer/Footer";
 import closeIcon from "../../assets/icons/close-24px.svg";
 import { useEffect, useState } from "react";
 
@@ -145,6 +146,7 @@ function HomePage() {
             </ul>
           );
         })}
+      <Footer />
     </>
   );
 }
