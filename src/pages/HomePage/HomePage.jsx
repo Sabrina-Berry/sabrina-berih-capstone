@@ -10,7 +10,6 @@ const api_key = import.meta.env.VITE_API_KEY;
 
 function HomePage() {
   const [orgList, setOrgList] = useState([]);
-  // const [selectedOrg, setSelectedOrg] = useState(null);
   const [search, setSearch] = useState("");
   const [cause, setCause] = useState("first_render");
   const [isLoading, setIsLoading] = useState(true);
@@ -22,24 +21,20 @@ function HomePage() {
     setCause(newCause);
   }
 
-  const toggleModal = () => {
-    setModal(!modal);
+  const closeModal = () => {
+    setModal(false);
   };
 
   const openModal = (item) => {
-    // setSelectedOrg(item);
-    console.log(item.slug);
     getOrgDetails(item.slug);
     setModal(true);
   };
 
   const getOrgDetails = async (slug) => {
-    console.log(slug);
     try {
       const response = await axios.get(
         `https://partners.every.org/v0.2/nonprofit/${slug}?apiKey=${api_key}`
       );
-      console.log(response.data);
       setOrgDetails(response.data);
     } catch (error) {
       if (error.status === 404) {
@@ -50,20 +45,19 @@ function HomePage() {
     }
   };
 
+  // prevent scroll if modal is open
   if (modal) {
     document.body.style.overflow = "hidden";
   } else {
     document.body.style.overflow = "unset";
   }
 
-  console.log(cause);
   useEffect(() => {
     const getData = async () => {
       try {
         const response = await axios.get(
           `https://partners.every.org/v0.2/browse/${cause}?apiKey=${api_key}`
         );
-        console.log(response.data);
         setOrgList(response.data.nonprofits);
         setIsLoading(false);
       } catch (error) {
@@ -116,15 +110,15 @@ function HomePage() {
                     src={item.coverImageUrl}
                   />
                   <h2 className="nonprofit-list__name">{item.name}</h2>
-                  {/* <button>Learn More</button> */}
                 </button>
                 {modal && orgDetails && (
                   <div className="modal">
-                    <div onClick={toggleModal} className="overlay"></div>
+                    {/* If the overlay is clicked close the modal */}
+                    <div onClick={closeModal} className="overlay"></div>
                     <div className="modal-content">
                       <h2>{orgDetails.data.nonprofit.name}</h2>
                       <img
-                        className="nonprofit-list__image"
+                        className="nonprofit-list__image nonprofit-list__modal-image"
                         src={orgDetails.data.nonprofit.coverImageUrl}
                       />
                       <h3>{orgDetails.data.nonprofit.locationAddress}</h3>
@@ -140,7 +134,10 @@ function HomePage() {
                             : "URL not found"}
                         </h3>
                       </Link>
-                      <button className="close-modal" onClick={toggleModal}>
+                      <Link to={orgDetails.data.nonprofit.websiteUrl}>
+                        <button className="nonprofit-list__btn">Donate</button>
+                      </Link>
+                      <button className="close-modal" onClick={closeModal}>
                         <img src={closeIcon} alt="close icon" />
                       </button>
                     </div>

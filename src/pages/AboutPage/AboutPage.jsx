@@ -1,6 +1,5 @@
 import "./AboutPage.scss";
-import { useParams } from "react-router-dom";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 const url = import.meta.env.VITE_BACKEND_URL;
@@ -32,14 +31,26 @@ export default function AboutPage() {
       {aboutDetails.map((item) => {
         return (
           <li className="about-page__item" key={item.id}>
-            <div className="about-page__container--left">
+            <div className="about-page__container--top">
               <img className="about-page__image" src={item.image} />
             </div>
-            <div className="about-page__container--right">
+            <div className="about-page__container--bottom">
               <div className="about-page__title">{item.title}</div>
-              <div className="about-page__channel">{item.description}</div>
-              <div className="about-page__channel">{item.stack}</div>
-              <div className="about-page__channel">{item.fact}</div>
+              <div className="about-page__title-text">{item.title_text}</div>
+              <br></br>
+              <div className="about-page__description">{item.description}</div>
+              <div className="about-page__description-text">
+                {item.description_text}
+              </div>
+              <br></br>
+              <div className="about-page__stack">{item.stack}</div>
+              <div className="about-page__stack-text">{item.stack_text}</div>
+              <br></br>
+              <div className="about-page__credits">{item.credits}</div>
+              <div className="about-page__credits-text">
+                {item.credits_text}
+              </div>
+              <br></br>
             </div>
           </li>
         );

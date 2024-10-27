@@ -1,7 +1,7 @@
 import "./Footer.scss";
 
-function Hero() {
-  return <div className="hero"></div>;
+function Footer() {
+  return <div className="footer"></div>;
 }
 
-export default Hero;
+export default Footer;

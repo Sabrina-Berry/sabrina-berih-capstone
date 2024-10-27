@@ -1,4 +1,3 @@
-
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/global" as *;
@@ -14,23 +13,18 @@
         background-color: $white;
         color: $black;
         background-image: url("../../assets/icons/search-24px.svg");
-        border-radius: 15px;
+        border-radius: 0.9375rem;
         background-repeat: no-repeat;
         background-size: contain;
         outline: none;
-        padding-left: 40px;
-        padding-top:10px;
-        padding-bottom:10px;
-        word-spacing: -5px; 
-        background-position: 5px; 
+        padding-left: 3rem;
+        padding-top:0.625rem;
+        padding-bottom:0.625rem;
+        word-spacing: -0.3125rem; 
+        background-position: 0.3125rem; 
         margin-bottom: 2rem;
-        // padding: 1rem;
     }
 }
-
-// .home-page__search::placeholder {
-// text-align:center;
-// }
 
 .nonprofit-list {
  display: flex;
@@ -39,34 +33,35 @@
  padding-right: 3rem;
  padding-bottom: 3rem;
     &__image {
-        // height:20vh;
-        // width:30vw;
-        border-radius:8px 8px 0 0;
-        height:100%;
+        border-radius:0.5rem 0.5rem 0 0;
+        height:40vh;
         width:100%;
 
+    }
+
+    &__modal-image {
+        border-radius:0.5rem;
+    }
+
+    &__btn {
+        color:$black;
+        background-color: rgb(82, 225, 82);
+        font-weight: 600;
     }
 
     &__btn-modal {
         width:fit-content;
         background: $blue;
         color: black;
-        border: 2px solid black;
+        border: 0.125rem solid black;
+        padding: 0;
+        border: 2rem;
     }
 
     &__name {
         padding-top:0.5rem;
         padding-bottom:1rem;
     }
-}
-
-
-.nonprofit-list__btn-modal {
-    padding: 0;
-    border: 2rem;
-    // max-width:30vw;
-    // margin: 100px auto 0;
-    // font-size: 18px;
 }
 
 .modal, .overlay {
@@ -88,18 +83,27 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    line-height: 1.4;
     background: $white;
-    padding: 14px 28px;
-    border-radius: 3px;
-    max-width: 600px;
-    min-width: 300px;
+    padding: 0.875rem 1.75rem;
+    border-radius: 0.1875rem;
+    width: 37.5rem;
+    min-width: 18.75rem;
+    background-color: #eeecff;
+
+    @include desktop {
+        top: 55%;
+        max-width: 40rem;
+    }
 }
 
 .close-modal {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    padding: 5px 7px;
+    top: 0.625rem;
+    right: 0.625rem;
+    padding: 0.3125rem 0.4375rem;
     background-color: $white;
+
+    &:hover {
+        border-color:$white;
+    }
 }

@@ -18,19 +18,23 @@
         justify-content: space-between;
         padding-left: 2rem;
         padding-right: 2rem;
-         }
+        }
     }
 
     &__nav {
         display: flex;
         align-items: center;
-        width:10rem;
+        width:12rem;
         justify-content: space-between;
 
         @include tablet {
             width:15%;
             padding-right: 1rem;
-            // justify-content: flex-end;
+        }
+
+        @include desktop {
+            width:10%;
+            padding-right: 1rem;
         }
 
         &-link {
@@ -41,9 +45,9 @@
         &-item--active {
             padding:0.2rem 1rem;
             background-color: $white;
-            border: 2px solid $white;
-            border-radius: 15px;
-            box-shadow: 2px 2px 2px $black;
+            border: 0.125rem solid $white;
+            border-radius: 0.9375rem;
+            box-shadow: 0.125rem 0.125rem 0.125rem $black;
         }
     }
 
@@ -58,14 +62,13 @@
 
         &-link {
             display: flex;
-            // width: 100%;
         }
 
         &-text {
             color: $black;
             align-self: center;
             font-size: 1.6rem;
-            word-spacing: -5px;
+            word-spacing: -0.3125rem;
         }
     }
 }
