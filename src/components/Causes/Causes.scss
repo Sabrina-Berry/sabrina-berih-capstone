@@ -3,10 +3,10 @@
 @use "../../styles/partials/global" as *;
 
 .causes-button {
-    box-shadow: 0.125rem 0.125rem 0.125rem #13182C;
+    box-shadow: 0.3rem 0.3rem 0.125rem 0.125rem #13182C;
     color:$black;
     background-color: $blue;
-    border: 0.125rem solid $black;
+    // border: 0.125rem solid $black;
     font-weight: 600;
     font-size:1.5rem;
     width:11rem;
