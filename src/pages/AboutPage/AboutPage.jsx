@@ -12,7 +12,9 @@ export default function AboutPage() {
   useEffect(() => {
     const getAbout = async () => {
       try {
-        const response = await axios.get(`${url}:${port}/about`);
+        const response = await axios.get(
+          `https://about-page444.netlify.app/.netlify/functions/about`
+        );
         setAboutDetails(response.data);
         setIsLoading(false);
       } catch (error) {

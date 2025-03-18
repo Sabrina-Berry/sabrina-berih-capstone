@@ -29,3 +29,6 @@ Header.css
 Causes.css
 Footer.css
 
+
+# Local Netlify folder
+.netlify
