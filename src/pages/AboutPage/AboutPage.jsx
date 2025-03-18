@@ -1,6 +1,7 @@
 import "./AboutPage.scss";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import logo from "../../assets/logo/logo.png";
 
 const url = import.meta.env.VITE_BACKEND_URL;
 const port = import.meta.env.VITE_PORT;
@@ -34,7 +35,7 @@ export default function AboutPage() {
         return (
           <li className="about-page__item" key={item.id}>
             <div className="about-page__container--top">
-              <img className="about-page__image" src={item.image} />
+              <img className="about-page__image" src={logo} />
             </div>
             <div className="about-page__container--bottom">
               <div className="about-page__title">{item.title}</div>
